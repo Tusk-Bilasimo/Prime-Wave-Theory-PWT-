@@ -1,0 +1,57 @@
+import sympy as sp
+import math
+
+# Base G value
+base_G = 6.67430e-11
+
+# Simple PWT-inspired G predictor function
+def predict_G(Z, A=None, k=0.001):
+    """
+    Predict variable G based on atomic number Z (or mass number A if provided).
+    - Factorize Z (or A) into primes.
+    - Compute variation as sum(ln(p) for p in unique primes) * k.
+    - Adjusted G = base_G * (1 + variation)
+    """
+    # Use A if provided (baryon count approximation), else Z
+    num = A if A is not None else Z
+    
+    # Get unique prime factors
+    factors = sp.factorint(num)
+    primes = list(factors.keys())  # Unique primes
+    
+    # Sum ln(p) for unique primes
+    log_sum = sum(math.log(p) for p in primes) if primes else 0.0
+    
+    # Variation factor
+    variation = log_sum * k
+    
+    # Adjusted G
+    adjusted_G = base_G * (1 + variation)
+    
+    return adjusted_G, variation, primes
+
+# Examples:
+# Hydrogen (Z=1, A=1): No primes, base G
+h_G, h_var, h_primes = predict_G(1, 1)
+
+# Iron (Z=26, A=56 for Fe-56): Primes from 56=2^3 * 7
+fe_G, fe_var, fe_primes = predict_G(26, 56)
+
+# Gold (Au, Z=79, A=197, 197 is prime)
+au_G, au_var, au_primes = predict_G(79, 197)
+
+# Print results
+print("Hydrogen (Z=1, A=1):")
+print(f"Primes: {h_primes}")
+print(f"Variation: {h_var:.6f}")
+print(f"Adjusted G: {h_G:.14e}")
+
+print("\nIron (Fe-56, Z=26, A=56):")
+print(f"Primes: {fe_primes}")
+print(f"Variation: {fe_var:.6f}")
+print(f"Adjusted G: {fe_G:.14e}")
+
+print("\nGold (Au-197, Z=79, A=197):")
+print(f"Primes: {au_primes}")
+print(f"Variation: {au_var:.6f}")
+print(f"Adjusted G: {au_G:.14e}")
