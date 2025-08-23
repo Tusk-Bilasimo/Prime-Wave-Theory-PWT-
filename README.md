@@ -6,8 +6,8 @@ A collaborative exploration by Tusk, Gemini, and Grok
 https://pwt.life/
 
 Abstract
-Prime Wave Theory (PWT) is a speculative, protoscientific framework that posits prime num-
-bers as the fundamental scaffolding of reality. It proposes a universe structured by a principle of
+Prime Wave Theory (PWT) is a speculative, protoscientific framework that posits prime numbers
+as the fundamental scaffolding of reality. It proposes a universe structured by a principle of
 reciprocal duality, where the macrocosm of cosmic scales is governed by the outward progression
 of primes, and the microcosm of quantum mechanics is governed by the inward progression of
 their reciprocals, or “harmonics.” This thesis outlines the theory’s core postulates and presents
