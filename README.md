@@ -17,7 +17,6 @@ For more context, check out the [PWT.life blog](https://pwt.life/blog), includin
 To run the tools locally:
 
 1. Clone the repo:
-2. 
 2. Install dependencies (Python 3.12+ recommended):
 3. - For Jupyter notebooks: `pip install notebook` (or `jupyterlab` for advanced use).
 
