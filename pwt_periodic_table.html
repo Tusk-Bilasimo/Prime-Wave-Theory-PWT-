@@ -1,0 +1,1317 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Periodic Table Highlighting Prime Wave Theory (PWT) Harmonics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .periodic-table {
+            display: grid;
+            grid-template-columns: repeat(18, 60px);
+            grid-template-rows: repeat(9, 60px);
+            grid-gap: 2px;
+            justify-content: center;
+        }
+        .element {
+            position: relative;
+            border: 1px solid #ccc;
+            text-align: center;
+            padding: 5px;
+            cursor: pointer;
+            color: black; /* Adjusted for visibility on light backgrounds */
+        }
+        .low-harmonic {
+            background-color: #a7c9e7;
+        }
+        .medium-harmonic {
+            background-color: #bce6b2;
+        }
+        .high-harmonic {
+            background-color: #e6b2b6;
+        }
+        .element:hover {
+            background-color: #e7e5a7 !important; /* Hover color overrides class backgrounds */
+        }
+        .symbol {
+            font-weight: bold;
+        }
+        .tooltip {
+            display: none;
+            position: absolute;
+            background: white;
+            color: black;
+            border: 1px solid black;
+            padding: 5px;
+            z-index: 10;
+            left: 70px;
+            top: 0;
+        }
+        .element:hover .tooltip {
+            display: block;
+        }
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        #modal-content {
+            background: white;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+        }
+        #close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        #close:hover {
+            color: black;
+            cursor: pointer;
+        }
+        .legend {
+            margin: 20px;
+        }
+        .legend-item {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Periodic Table Highlighting Prime Wave Theory (PWT) Harmonics</h1>
+    <div class="legend">
+        <div class="legend-item"><span class="legend-color low-harmonic"></span> Low Harmonic (<0.5)</div>
+        <div class="legend-item"><span class="legend-color medium-harmonic"></span> Medium Harmonic (0.5-1)</div>
+        <div class="legend-item"><span class="legend-color high-harmonic"></span> High Harmonic (>1)</div>
+    </div>
+    <div class="periodic-table">
+
+        <div class="element low-harmonic" style="grid-row: 1; grid-column: 1;" data-name="Hydrogen" data-prime="1" data-harmonic="0">
+            <div class="num">1</div>
+            <div class="symbol">H</div>
+            <div class="tooltip">
+                <p>Hydrogen</p>
+                <p>Prime Signature: 1</p>
+                <p>Harmonic: 0</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 1; grid-column: 18;" data-name="Helium" data-prime="2" data-harmonic="1/2">
+            <div class="num">2</div>
+            <div class="symbol">He</div>
+            <div class="tooltip">
+                <p>Helium</p>
+                <p>Prime Signature: 2</p>
+                <p>Harmonic: 1/2</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 2; grid-column: 1;" data-name="Lithium" data-prime="3" data-harmonic="1/3">
+            <div class="num">3</div>
+            <div class="symbol">Li</div>
+            <div class="tooltip">
+                <p>Lithium</p>
+                <p>Prime Signature: 3</p>
+                <p>Harmonic: 1/3</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 2; grid-column: 2;" data-name="Beryllium" data-prime="2²" data-harmonic="1">
+            <div class="num">4</div>
+            <div class="symbol">Be</div>
+            <div class="tooltip">
+                <p>Beryllium</p>
+                <p>Prime Signature: 2²</p>
+                <p>Harmonic: 1</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 2; grid-column: 13;" data-name="Boron" data-prime="5" data-harmonic="1/5">
+            <div class="num">5</div>
+            <div class="symbol">B</div>
+            <div class="tooltip">
+                <p>Boron</p>
+                <p>Prime Signature: 5</p>
+                <p>Harmonic: 1/5</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 2; grid-column: 14;" data-name="Carbon" data-prime="2 × 3" data-harmonic="5/6">
+            <div class="num">6</div>
+            <div class="symbol">C</div>
+            <div class="tooltip">
+                <p>Carbon</p>
+                <p>Prime Signature: 2 × 3</p>
+                <p>Harmonic: 5/6</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 2; grid-column: 15;" data-name="Nitrogen" data-prime="7" data-harmonic="1/7">
+            <div class="num">7</div>
+            <div class="symbol">N</div>
+            <div class="tooltip">
+                <p>Nitrogen</p>
+                <p>Prime Signature: 7</p>
+                <p>Harmonic: 1/7</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 2; grid-column: 16;" data-name="Oxygen" data-prime="2³" data-harmonic="3/2">
+            <div class="num">8</div>
+            <div class="symbol">O</div>
+            <div class="tooltip">
+                <p>Oxygen</p>
+                <p>Prime Signature: 2³</p>
+                <p>Harmonic: 3/2</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 2; grid-column: 17;" data-name="Fluorine" data-prime="3²" data-harmonic="2/3">
+            <div class="num">9</div>
+            <div class="symbol">F</div>
+            <div class="tooltip">
+                <p>Fluorine</p>
+                <p>Prime Signature: 3²</p>
+                <p>Harmonic: 2/3</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 2; grid-column: 18;" data-name="Neon" data-prime="2 × 5" data-harmonic="7/10">
+            <div class="num">10</div>
+            <div class="symbol">Ne</div>
+            <div class="tooltip">
+                <p>Neon</p>
+                <p>Prime Signature: 2 × 5</p>
+                <p>Harmonic: 7/10</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 3; grid-column: 1;" data-name="Sodium" data-prime="11" data-harmonic="1/11">
+            <div class="num">11</div>
+            <div class="symbol">Na</div>
+            <div class="tooltip">
+                <p>Sodium</p>
+                <p>Prime Signature: 11</p>
+                <p>Harmonic: 1/11</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 3; grid-column: 2;" data-name="Magnesium" data-prime="2² × 3" data-harmonic="4/3">
+            <div class="num">12</div>
+            <div class="symbol">Mg</div>
+            <div class="tooltip">
+                <p>Magnesium</p>
+                <p>Prime Signature: 2² × 3</p>
+                <p>Harmonic: 4/3</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 3; grid-column: 13;" data-name="Aluminium" data-prime="13" data-harmonic="1/13">
+            <div class="num">13</div>
+            <div class="symbol">Al</div>
+            <div class="tooltip">
+                <p>Aluminium</p>
+                <p>Prime Signature: 13</p>
+                <p>Harmonic: 1/13</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 3; grid-column: 14;" data-name="Silicon" data-prime="2 × 7" data-harmonic="9/14">
+            <div class="num">14</div>
+            <div class="symbol">Si</div>
+            <div class="tooltip">
+                <p>Silicon</p>
+                <p>Prime Signature: 2 × 7</p>
+                <p>Harmonic: 9/14</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 3; grid-column: 15;" data-name="Phosphorus" data-prime="3 × 5" data-harmonic="8/15">
+            <div class="num">15</div>
+            <div class="symbol">P</div>
+            <div class="tooltip">
+                <p>Phosphorus</p>
+                <p>Prime Signature: 3 × 5</p>
+                <p>Harmonic: 8/15</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 3; grid-column: 16;" data-name="Sulfur" data-prime="2⁴" data-harmonic="2">
+            <div class="num">16</div>
+            <div class="symbol">S</div>
+            <div class="tooltip">
+                <p>Sulfur</p>
+                <p>Prime Signature: 2⁴</p>
+                <p>Harmonic: 2</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 3; grid-column: 17;" data-name="Chlorine" data-prime="17" data-harmonic="1/17">
+            <div class="num">17</div>
+            <div class="symbol">Cl</div>
+            <div class="tooltip">
+                <p>Chlorine</p>
+                <p>Prime Signature: 17</p>
+                <p>Harmonic: 1/17</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 3; grid-column: 18;" data-name="Argon" data-prime="2 × 3²" data-harmonic="7/6">
+            <div class="num">18</div>
+            <div class="symbol">Ar</div>
+            <div class="tooltip">
+                <p>Argon</p>
+                <p>Prime Signature: 2 × 3²</p>
+                <p>Harmonic: 7/6</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 4; grid-column: 1;" data-name="Potassium" data-prime="19" data-harmonic="1/19">
+            <div class="num">19</div>
+            <div class="symbol">K</div>
+            <div class="tooltip">
+                <p>Potassium</p>
+                <p>Prime Signature: 19</p>
+                <p>Harmonic: 1/19</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 4; grid-column: 2;" data-name="Calcium" data-prime="2² × 5" data-harmonic="6/5">
+            <div class="num">20</div>
+            <div class="symbol">Ca</div>
+            <div class="tooltip">
+                <p>Calcium</p>
+                <p>Prime Signature: 2² × 5</p>
+                <p>Harmonic: 6/5</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 4; grid-column: 3;" data-name="Scandium" data-prime="3 × 7" data-harmonic="10/21">
+            <div class="num">21</div>
+            <div class="symbol">Sc</div>
+            <div class="tooltip">
+                <p>Scandium</p>
+                <p>Prime Signature: 3 × 7</p>
+                <p>Harmonic: 10/21</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 4; grid-column: 4;" data-name="Titanium" data-prime="2 × 11" data-harmonic="13/22">
+            <div class="num">22</div>
+            <div class="symbol">Ti</div>
+            <div class="tooltip">
+                <p>Titanium</p>
+                <p>Prime Signature: 2 × 11</p>
+                <p>Harmonic: 13/22</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 4; grid-column: 5;" data-name="Vanadium" data-prime="23" data-harmonic="1/23">
+            <div class="num">23</div>
+            <div class="symbol">V</div>
+            <div class="tooltip">
+                <p>Vanadium</p>
+                <p>Prime Signature: 23</p>
+                <p>Harmonic: 1/23</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 4; grid-column: 6;" data-name="Chromium" data-prime="2³ × 3" data-harmonic="11/6">
+            <div class="num">24</div>
+            <div class="symbol">Cr</div>
+            <div class="tooltip">
+                <p>Chromium</p>
+                <p>Prime Signature: 2³ × 3</p>
+                <p>Harmonic: 11/6</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 4; grid-column: 7;" data-name="Manganese" data-prime="5²" data-harmonic="2/5">
+            <div class="num">25</div>
+            <div class="symbol">Mn</div>
+            <div class="tooltip">
+                <p>Manganese</p>
+                <p>Prime Signature: 5²</p>
+                <p>Harmonic: 2/5</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 4; grid-column: 8;" data-name="Iron" data-prime="2 × 13" data-harmonic="15/26">
+            <div class="num">26</div>
+            <div class="symbol">Fe</div>
+            <div class="tooltip">
+                <p>Iron</p>
+                <p>Prime Signature: 2 × 13</p>
+                <p>Harmonic: 15/26</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 4; grid-column: 9;" data-name="Cobalt" data-prime="3³" data-harmonic="1">
+            <div class="num">27</div>
+            <div class="symbol">Co</div>
+            <div class="tooltip">
+                <p>Cobalt</p>
+                <p>Prime Signature: 3³</p>
+                <p>Harmonic: 1</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 4; grid-column: 10;" data-name="Nickel" data-prime="2² × 7" data-harmonic="11/7">
+            <div class="num">28</div>
+            <div class="symbol">Ni</div>
+            <div class="tooltip">
+                <p>Nickel</p>
+                <p>Prime Signature: 2² × 7</p>
+                <p>Harmonic: 11/7</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 4; grid-column: 11;" data-name="Copper" data-prime="29" data-harmonic="1/29">
+            <div class="num">29</div>
+            <div class="symbol">Cu</div>
+            <div class="tooltip">
+                <p>Copper</p>
+                <p>Prime Signature: 29</p>
+                <p>Harmonic: 1/29</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 4; grid-column: 12;" data-name="Zinc" data-prime="2 × 3 × 5" data-harmonic="23/30">
+            <div class="num">30</div>
+            <div class="symbol">Zn</div>
+            <div class="tooltip">
+                <p>Zinc</p>
+                <p>Prime Signature: 2 × 3 × 5</p>
+                <p>Harmonic: 23/30</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 4; grid-column: 13;" data-name="Gallium" data-prime="31" data-harmonic="1/31">
+            <div class="num">31</div>
+            <div class="symbol">Ga</div>
+            <div class="tooltip">
+                <p>Gallium</p>
+                <p>Prime Signature: 31</p>
+                <p>Harmonic: 1/31</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 4; grid-column: 14;" data-name="Germanium" data-prime="2⁵" data-harmonic="5/2">
+            <div class="num">32</div>
+            <div class="symbol">Ge</div>
+            <div class="tooltip">
+                <p>Germanium</p>
+                <p>Prime Signature: 2⁵</p>
+                <p>Harmonic: 5/2</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 4; grid-column: 15;" data-name="Arsenic" data-prime="3 × 11" data-harmonic="14/33">
+            <div class="num">33</div>
+            <div class="symbol">As</div>
+            <div class="tooltip">
+                <p>Arsenic</p>
+                <p>Prime Signature: 3 × 11</p>
+                <p>Harmonic: 14/33</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 4; grid-column: 16;" data-name="Selenium" data-prime="2 × 17" data-harmonic="19/34">
+            <div class="num">34</div>
+            <div class="symbol">Se</div>
+            <div class="tooltip">
+                <p>Selenium</p>
+                <p>Prime Signature: 2 × 17</p>
+                <p>Harmonic: 19/34</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 4; grid-column: 17;" data-name="Bromine" data-prime="5 × 7" data-harmonic="12/35">
+            <div class="num">35</div>
+            <div class="symbol">Br</div>
+            <div class="tooltip">
+                <p>Bromine</p>
+                <p>Prime Signature: 5 × 7</p>
+                <p>Harmonic: 12/35</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 4; grid-column: 18;" data-name="Krypton" data-prime="2² × 3²" data-harmonic="5/3">
+            <div class="num">36</div>
+            <div class="symbol">Kr</div>
+            <div class="tooltip">
+                <p>Krypton</p>
+                <p>Prime Signature: 2² × 3²</p>
+                <p>Harmonic: 5/3</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 5; grid-column: 1;" data-name="Rubidium" data-prime="37" data-harmonic="1/37">
+            <div class="num">37</div>
+            <div class="symbol">Rb</div>
+            <div class="tooltip">
+                <p>Rubidium</p>
+                <p>Prime Signature: 37</p>
+                <p>Harmonic: 1/37</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 5; grid-column: 2;" data-name="Strontium" data-prime="2 × 19" data-harmonic="21/38">
+            <div class="num">38</div>
+            <div class="symbol">Sr</div>
+            <div class="tooltip">
+                <p>Strontium</p>
+                <p>Prime Signature: 2 × 19</p>
+                <p>Harmonic: 21/38</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 5; grid-column: 3;" data-name="Yttrium" data-prime="3 × 13" data-harmonic="16/39">
+            <div class="num">39</div>
+            <div class="symbol">Y</div>
+            <div class="tooltip">
+                <p>Yttrium</p>
+                <p>Prime Signature: 3 × 13</p>
+                <p>Harmonic: 16/39</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 5; grid-column: 4;" data-name="Zirconium" data-prime="2³ × 5" data-harmonic="8/5">
+            <div class="num">40</div>
+            <div class="symbol">Zr</div>
+            <div class="tooltip">
+                <p>Zirconium</p>
+                <p>Prime Signature: 2³ × 5</p>
+                <p>Harmonic: 8/5</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 5; grid-column: 5;" data-name="Niobium" data-prime="41" data-harmonic="1/41">
+            <div class="num">41</div>
+            <div class="symbol">Nb</div>
+            <div class="tooltip">
+                <p>Niobium</p>
+                <p>Prime Signature: 41</p>
+                <p>Harmonic: 1/41</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 5; grid-column: 6;" data-name="Molybdenum" data-prime="2 × 3 × 7" data-harmonic="31/42">
+            <div class="num">42</div>
+            <div class="symbol">Mo</div>
+            <div class="tooltip">
+                <p>Molybdenum</p>
+                <p>Prime Signature: 2 × 3 × 7</p>
+                <p>Harmonic: 31/42</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 5; grid-column: 7;" data-name="Technetium" data-prime="43" data-harmonic="1/43">
+            <div class="num">43</div>
+            <div class="symbol">Tc</div>
+            <div class="tooltip">
+                <p>Technetium</p>
+                <p>Prime Signature: 43</p>
+                <p>Harmonic: 1/43</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 5; grid-column: 8;" data-name="Ruthenium" data-prime="2² × 11" data-harmonic="13/11">
+            <div class="num">44</div>
+            <div class="symbol">Ru</div>
+            <div class="tooltip">
+                <p>Ruthenium</p>
+                <p>Prime Signature: 2² × 11</p>
+                <p>Harmonic: 13/11</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 5; grid-column: 9;" data-name="Rhodium" data-prime="3² × 5" data-harmonic="13/15">
+            <div class="num">45</div>
+            <div class="symbol">Rh</div>
+            <div class="tooltip">
+                <p>Rhodium</p>
+                <p>Prime Signature: 3² × 5</p>
+                <p>Harmonic: 13/15</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 5; grid-column: 10;" data-name="Palladium" data-prime="2 × 23" data-harmonic="25/46">
+            <div class="num">46</div>
+            <div class="symbol">Pd</div>
+            <div class="tooltip">
+                <p>Palladium</p>
+                <p>Prime Signature: 2 × 23</p>
+                <p>Harmonic: 25/46</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 5; grid-column: 11;" data-name="Silver" data-prime="47" data-harmonic="1/47">
+            <div class="num">47</div>
+            <div class="symbol">Ag</div>
+            <div class="tooltip">
+                <p>Silver</p>
+                <p>Prime Signature: 47</p>
+                <p>Harmonic: 1/47</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 5; grid-column: 12;" data-name="Cadmium" data-prime="2⁴ × 3" data-harmonic="13/6">
+            <div class="num">48</div>
+            <div class="symbol">Cd</div>
+            <div class="tooltip">
+                <p>Cadmium</p>
+                <p>Prime Signature: 2⁴ × 3</p>
+                <p>Harmonic: 13/6</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 5; grid-column: 13;" data-name="Indium" data-prime="7²" data-harmonic="2/7">
+            <div class="num">49</div>
+            <div class="symbol">In</div>
+            <div class="tooltip">
+                <p>Indium</p>
+                <p>Prime Signature: 7²</p>
+                <p>Harmonic: 2/7</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 5; grid-column: 14;" data-name="Tin" data-prime="2 × 5²" data-harmonic="9/10">
+            <div class="num">50</div>
+            <div class="symbol">Sn</div>
+            <div class="tooltip">
+                <p>Tin</p>
+                <p>Prime Signature: 2 × 5²</p>
+                <p>Harmonic: 9/10</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 5; grid-column: 15;" data-name="Antimony" data-prime="3 × 17" data-harmonic="20/51">
+            <div class="num">51</div>
+            <div class="symbol">Sb</div>
+            <div class="tooltip">
+                <p>Antimony</p>
+                <p>Prime Signature: 3 × 17</p>
+                <p>Harmonic: 20/51</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 5; grid-column: 16;" data-name="Tellurium" data-prime="2² × 13" data-harmonic="15/13">
+            <div class="num">52</div>
+            <div class="symbol">Te</div>
+            <div class="tooltip">
+                <p>Tellurium</p>
+                <p>Prime Signature: 2² × 13</p>
+                <p>Harmonic: 15/13</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 5; grid-column: 17;" data-name="Iodine" data-prime="53" data-harmonic="1/53">
+            <div class="num">53</div>
+            <div class="symbol">I</div>
+            <div class="tooltip">
+                <p>Iodine</p>
+                <p>Prime Signature: 53</p>
+                <p>Harmonic: 1/53</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 5; grid-column: 18;" data-name="Xenon" data-prime="2 × 3³" data-harmonic="10/9">
+            <div class="num">54</div>
+            <div class="symbol">Xe</div>
+            <div class="tooltip">
+                <p>Xenon</p>
+                <p>Prime Signature: 2 × 3³</p>
+                <p>Harmonic: 10/9</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 6; grid-column: 1;" data-name="Caesium" data-prime="5 × 11" data-harmonic="16/55">
+            <div class="num">55</div>
+            <div class="symbol">Cs</div>
+            <div class="tooltip">
+                <p>Caesium</p>
+                <p>Prime Signature: 5 × 11</p>
+                <p>Harmonic: 16/55</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 6; grid-column: 2;" data-name="Barium" data-prime="2³ × 7" data-harmonic="15/7">
+            <div class="num">56</div>
+            <div class="symbol">Ba</div>
+            <div class="tooltip">
+                <p>Barium</p>
+                <p>Prime Signature: 2³ × 7</p>
+                <p>Harmonic: 15/7</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 6; grid-column: 3;" data-name="Lanthanum" data-prime="3 × 19" data-harmonic="22/57">
+            <div class="num">57</div>
+            <div class="symbol">La</div>
+            <div class="tooltip">
+                <p>Lanthanum</p>
+                <p>Prime Signature: 3 × 19</p>
+                <p>Harmonic: 22/57</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 8; grid-column: 3;" data-name="Cerium" data-prime="2 × 29" data-harmonic="31/58">
+            <div class="num">58</div>
+            <div class="symbol">Ce</div>
+            <div class="tooltip">
+                <p>Cerium</p>
+                <p>Prime Signature: 2 × 29</p>
+                <p>Harmonic: 31/58</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 8; grid-column: 4;" data-name="Praseodymium" data-prime="59" data-harmonic="1/59">
+            <div class="num">59</div>
+            <div class="symbol">Pr</div>
+            <div class="tooltip">
+                <p>Praseodymium</p>
+                <p>Prime Signature: 59</p>
+                <p>Harmonic: 1/59</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 8; grid-column: 5;" data-name="Neodymium" data-prime="2² × 3 × 5" data-harmonic="29/15">
+            <div class="num">60</div>
+            <div class="symbol">Nd</div>
+            <div class="tooltip">
+                <p>Neodymium</p>
+                <p>Prime Signature: 2² × 3 × 5</p>
+                <p>Harmonic: 29/15</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 8; grid-column: 6;" data-name="Promethium" data-prime="61" data-harmonic="1/61">
+            <div class="num">61</div>
+            <div class="symbol">Pm</div>
+            <div class="tooltip">
+                <p>Promethium</p>
+                <p>Prime Signature: 61</p>
+                <p>Harmonic: 1/61</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 8; grid-column: 7;" data-name="Samarium" data-prime="2 × 31" data-harmonic="33/62">
+            <div class="num">62</div>
+            <div class="symbol">Sm</div>
+            <div class="tooltip">
+                <p>Samarium</p>
+                <p>Prime Signature: 2 × 31</p>
+                <p>Harmonic: 33/62</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 8; grid-column: 8;" data-name="Europium" data-prime="3² × 7" data-harmonic="16/21">
+            <div class="num">63</div>
+            <div class="symbol">Eu</div>
+            <div class="tooltip">
+                <p>Europium</p>
+                <p>Prime Signature: 3² × 7</p>
+                <p>Harmonic: 16/21</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 8; grid-column: 9;" data-name="Gadolinium" data-prime="2⁶" data-harmonic="3">
+            <div class="num">64</div>
+            <div class="symbol">Gd</div>
+            <div class="tooltip">
+                <p>Gadolinium</p>
+                <p>Prime Signature: 2⁶</p>
+                <p>Harmonic: 3</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 8; grid-column: 10;" data-name="Terbium" data-prime="5 × 13" data-harmonic="18/65">
+            <div class="num">65</div>
+            <div class="symbol">Tb</div>
+            <div class="tooltip">
+                <p>Terbium</p>
+                <p>Prime Signature: 5 × 13</p>
+                <p>Harmonic: 18/65</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 8; grid-column: 11;" data-name="Dysprosium" data-prime="2 × 3 × 11" data-harmonic="40/66">
+            <div class="num">66</div>
+            <div class="symbol">Dy</div>
+            <div class="tooltip">
+                <p>Dysprosium</p>
+                <p>Prime Signature: 2 × 3 × 11</p>
+                <p>Harmonic: 40/66</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 8; grid-column: 12;" data-name="Holmium" data-prime="67" data-harmonic="1/67">
+            <div class="num">67</div>
+            <div class="symbol">Ho</div>
+            <div class="tooltip">
+                <p>Holmium</p>
+                <p>Prime Signature: 67</p>
+                <p>Harmonic: 1/67</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 8; grid-column: 13;" data-name="Erbium" data-prime="2² × 17" data-harmonic="19/17">
+            <div class="num">68</div>
+            <div class="symbol">Er</div>
+            <div class="tooltip">
+                <p>Erbium</p>
+                <p>Prime Signature: 2² × 17</p>
+                <p>Harmonic: 19/17</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 8; grid-column: 14;" data-name="Thulium" data-prime="3 × 23" data-harmonic="26/69">
+            <div class="num">69</div>
+            <div class="symbol">Tm</div>
+            <div class="tooltip">
+                <p>Thulium</p>
+                <p>Prime Signature: 3 × 23</p>
+                <p>Harmonic: 26/69</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 8; grid-column: 15;" data-name="Ytterbium" data-prime="2 × 5 × 7" data-harmonic="26/35">
+            <div class="num">70</div>
+            <div class="symbol">Yb</div>
+            <div class="tooltip">
+                <p>Ytterbium</p>
+                <p>Prime Signature: 2 × 5 × 7</p>
+                <p>Harmonic: 26/35</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 8; grid-column: 16;" data-name="Lutetium" data-prime="71" data-harmonic="1/71">
+            <div class="num">71</div>
+            <div class="symbol">Lu</div>
+            <div class="tooltip">
+                <p>Lutetium</p>
+                <p>Prime Signature: 71</p>
+                <p>Harmonic: 1/71</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 6; grid-column: 4;" data-name="Hafnium" data-prime="2³ × 3²" data-harmonic="2">
+            <div class="num">72</div>
+            <div class="symbol">Hf</div>
+            <div class="tooltip">
+                <p>Hafnium</p>
+                <p>Prime Signature: 2³ × 3²</p>
+                <p>Harmonic: 2</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 6; grid-column: 5;" data-name="Tantalum" data-prime="73" data-harmonic="1/73">
+            <div class="num">73</div>
+            <div class="symbol">Ta</div>
+            <div class="tooltip">
+                <p>Tantalum</p>
+                <p>Prime Signature: 73</p>
+                <p>Harmonic: 1/73</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 6; grid-column: 6;" data-name="Tungsten" data-prime="2 × 37" data-harmonic="39/74">
+            <div class="num">74</div>
+            <div class="symbol">W</div>
+            <div class="tooltip">
+                <p>Tungsten</p>
+                <p>Prime Signature: 2 × 37</p>
+                <p>Harmonic: 39/74</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 6; grid-column: 7;" data-name="Rhenium" data-prime="3 × 5²" data-harmonic="16/15">
+            <div class="num">75</div>
+            <div class="symbol">Re</div>
+            <div class="tooltip">
+                <p>Rhenium</p>
+                <p>Prime Signature: 3 × 5²</p>
+                <p>Harmonic: 16/15</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 6; grid-column: 8;" data-name="Osmium" data-prime="2² × 19" data-harmonic="21/19">
+            <div class="num">76</div>
+            <div class="symbol">Os</div>
+            <div class="tooltip">
+                <p>Osmium</p>
+                <p>Prime Signature: 2² × 19</p>
+                <p>Harmonic: 21/19</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 6; grid-column: 9;" data-name="Iridium" data-prime="7 × 11" data-harmonic="18/77">
+            <div class="num">77</div>
+            <div class="symbol">Ir</div>
+            <div class="tooltip">
+                <p>Iridium</p>
+                <p>Prime Signature: 7 × 11</p>
+                <p>Harmonic: 18/77</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 6; grid-column: 10;" data-name="Platinum" data-prime="2 × 3 × 13" data-harmonic="45/78">
+            <div class="num">78</div>
+            <div class="symbol">Pt</div>
+            <div class="tooltip">
+                <p>Platinum</p>
+                <p>Prime Signature: 2 × 3 × 13</p>
+                <p>Harmonic: 45/78</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 6; grid-column: 11;" data-name="Gold" data-prime="79" data-harmonic="1/79">
+            <div class="num">79</div>
+            <div class="symbol">Au</div>
+            <div class="tooltip">
+                <p>Gold</p>
+                <p>Prime Signature: 79</p>
+                <p>Harmonic: 1/79</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 6; grid-column: 12;" data-name="Mercury" data-prime="2⁴ × 5" data-harmonic="13/5">
+            <div class="num">80</div>
+            <div class="symbol">Hg</div>
+            <div class="tooltip">
+                <p>Mercury</p>
+                <p>Prime Signature: 2⁴ × 5</p>
+                <p>Harmonic: 13/5</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 6; grid-column: 13;" data-name="Thallium" data-prime="3⁴" data-harmonic="4/3">
+            <div class="num">81</div>
+            <div class="symbol">Tl</div>
+            <div class="tooltip">
+                <p>Thallium</p>
+                <p>Prime Signature: 3⁴</p>
+                <p>Harmonic: 4/3</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 6; grid-column: 14;" data-name="Lead" data-prime="2 × 41" data-harmonic="43/82">
+            <div class="num">82</div>
+            <div class="symbol">Pb</div>
+            <div class="tooltip">
+                <p>Lead</p>
+                <p>Prime Signature: 2 × 41</p>
+                <p>Harmonic: 43/82</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 6; grid-column: 15;" data-name="Bismuth" data-prime="83" data-harmonic="1/83">
+            <div class="num">83</div>
+            <div class="symbol">Bi</div>
+            <div class="tooltip">
+                <p>Bismuth</p>
+                <p>Prime Signature: 83</p>
+                <p>Harmonic: 1/83</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 6; grid-column: 16;" data-name="Polonium" data-prime="2² × 3 × 7" data-harmonic="38/21">
+            <div class="num">84</div>
+            <div class="symbol">Po</div>
+            <div class="tooltip">
+                <p>Polonium</p>
+                <p>Prime Signature: 2² × 3 × 7</p>
+                <p>Harmonic: 38/21</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 6; grid-column: 17;" data-name="Astatine" data-prime="5 × 17" data-harmonic="22/85">
+            <div class="num">85</div>
+            <div class="symbol">At</div>
+            <div class="tooltip">
+                <p>Astatine</p>
+                <p>Prime Signature: 5 × 17</p>
+                <p>Harmonic: 22/85</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 6; grid-column: 18;" data-name="Radon" data-prime="2 × 43" data-harmonic="45/86">
+            <div class="num">86</div>
+            <div class="symbol">Rn</div>
+            <div class="tooltip">
+                <p>Radon</p>
+                <p>Prime Signature: 2 × 43</p>
+                <p>Harmonic: 45/86</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 7; grid-column: 1;" data-name="Francium" data-prime="3 × 29" data-harmonic="32/87">
+            <div class="num">87</div>
+            <div class="symbol">Fr</div>
+            <div class="tooltip">
+                <p>Francium</p>
+                <p>Prime Signature: 3 × 29</p>
+                <p>Harmonic: 32/87</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 7; grid-column: 2;" data-name="Radium" data-prime="2³ × 11" data-harmonic="25/22">
+            <div class="num">88</div>
+            <div class="symbol">Ra</div>
+            <div class="tooltip">
+                <p>Radium</p>
+                <p>Prime Signature: 2³ × 11</p>
+                <p>Harmonic: 25/22</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 7; grid-column: 3;" data-name="Actinium" data-prime="89" data-harmonic="1/89">
+            <div class="num">89</div>
+            <div class="symbol">Ac</div>
+            <div class="tooltip">
+                <p>Actinium</p>
+                <p>Prime Signature: 89</p>
+                <p>Harmonic: 1/89</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 9; grid-column: 3;" data-name="Thorium" data-prime="2 × 3² × 5" data-harmonic="28/15">
+            <div class="num">90</div>
+            <div class="symbol">Th</div>
+            <div class="tooltip">
+                <p>Thorium</p>
+                <p>Prime Signature: 2 × 3² × 5</p>
+                <p>Harmonic: 28/15</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 9; grid-column: 4;" data-name="Protactinium" data-prime="7 × 13" data-harmonic="20/91">
+            <div class="num">91</div>
+            <div class="symbol">Pa</div>
+            <div class="tooltip">
+                <p>Protactinium</p>
+                <p>Prime Signature: 7 × 13</p>
+                <p>Harmonic: 20/91</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 9; grid-column: 5;" data-name="Uranium" data-prime="2² × 23" data-harmonic="25/23">
+            <div class="num">92</div>
+            <div class="symbol">U</div>
+            <div class="tooltip">
+                <p>Uranium</p>
+                <p>Prime Signature: 2² × 23</p>
+                <p>Harmonic: 25/23</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 9; grid-column: 6;" data-name="Neptunium" data-prime="3 × 31" data-harmonic="34/93">
+            <div class="num">93</div>
+            <div class="symbol">Np</div>
+            <div class="tooltip">
+                <p>Neptunium</p>
+                <p>Prime Signature: 3 × 31</p>
+                <p>Harmonic: 34/93</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 9; grid-column: 7;" data-name="Plutonium" data-prime="2 × 47" data-harmonic="49/94">
+            <div class="num">94</div>
+            <div class="symbol">Pu</div>
+            <div class="tooltip">
+                <p>Plutonium</p>
+                <p>Prime Signature: 2 × 47</p>
+                <p>Harmonic: 49/94</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 9; grid-column: 8;" data-name="Americium" data-prime="5 × 19" data-harmonic="24/95">
+            <div class="num">95</div>
+            <div class="symbol">Am</div>
+            <div class="tooltip">
+                <p>Americium</p>
+                <p>Prime Signature: 5 × 19</p>
+                <p>Harmonic: 24/95</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 9; grid-column: 9;" data-name="Curium" data-prime="2⁵ × 3" data-harmonic="19/6">
+            <div class="num">96</div>
+            <div class="symbol">Cm</div>
+            <div class="tooltip">
+                <p>Curium</p>
+                <p>Prime Signature: 2⁵ × 3</p>
+                <p>Harmonic: 19/6</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 9; grid-column: 10;" data-name="Berkelium" data-prime="97" data-harmonic="1/97">
+            <div class="num">97</div>
+            <div class="symbol">Bk</div>
+            <div class="tooltip">
+                <p>Berkelium</p>
+                <p>Prime Signature: 97</p>
+                <p>Harmonic: 1/97</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 9; grid-column: 11;" data-name="Californium" data-prime="2 × 7²" data-harmonic="15/14">
+            <div class="num">98</div>
+            <div class="symbol">Cf</div>
+            <div class="tooltip">
+                <p>Californium</p>
+                <p>Prime Signature: 2 × 7²</p>
+                <p>Harmonic: 15/14</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 9; grid-column: 12;" data-name="Einsteinium" data-prime="3² × 11" data-harmonic="17/33">
+            <div class="num">99</div>
+            <div class="symbol">Es</div>
+            <div class="tooltip">
+                <p>Einsteinium</p>
+                <p>Prime Signature: 3² × 11</p>
+                <p>Harmonic: 17/33</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 9; grid-column: 13;" data-name="Fermium" data-prime="2² × 5²" data-harmonic="7/5">
+            <div class="num">100</div>
+            <div class="symbol">Fm</div>
+            <div class="tooltip">
+                <p>Fermium</p>
+                <p>Prime Signature: 2² × 5²</p>
+                <p>Harmonic: 7/5</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 9; grid-column: 14;" data-name="Mendelevium" data-prime="101" data-harmonic="1/101">
+            <div class="num">101</div>
+            <div class="symbol">Md</div>
+            <div class="tooltip">
+                <p>Mendelevium</p>
+                <p>Prime Signature: 101</p>
+                <p>Harmonic: 1/101</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 9; grid-column: 15;" data-name="Nobelium" data-prime="2 × 3 × 17" data-harmonic="62/102">
+            <div class="num">102</div>
+            <div class="symbol">No</div>
+            <div class="tooltip">
+                <p>Nobelium</p>
+                <p>Prime Signature: 2 × 3 × 17</p>
+                <p>Harmonic: 62/102</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 9; grid-column: 16;" data-name="Lawrencium" data-prime="103" data-harmonic="1/103">
+            <div class="num">103</div>
+            <div class="symbol">Lr</div>
+            <div class="tooltip">
+                <p>Lawrencium</p>
+                <p>Prime Signature: 103</p>
+                <p>Harmonic: 1/103</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 7; grid-column: 4;" data-name="Rutherfordium" data-prime="2³ × 13" data-harmonic="15/13">
+            <div class="num">104</div>
+            <div class="symbol">Rf</div>
+            <div class="tooltip">
+                <p>Rutherfordium</p>
+                <p>Prime Signature: 2³ × 13</p>
+                <p>Harmonic: 15/13</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 7; grid-column: 5;" data-name="Dubnium" data-prime="3 × 5 × 7" data-harmonic="47/105">
+            <div class="num">105</div>
+            <div class="symbol">Db</div>
+            <div class="tooltip">
+                <p>Dubnium</p>
+                <p>Prime Signature: 3 × 5 × 7</p>
+                <p>Harmonic: 47/105</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 7; grid-column: 6;" data-name="Seaborgium" data-prime="2 × 53" data-harmonic="55/106">
+            <div class="num">106</div>
+            <div class="symbol">Sg</div>
+            <div class="tooltip">
+                <p>Seaborgium</p>
+                <p>Prime Signature: 2 × 53</p>
+                <p>Harmonic: 55/106</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 7; grid-column: 7;" data-name="Bohrium" data-prime="107" data-harmonic="1/107">
+            <div class="num">107</div>
+            <div class="symbol">Bh</div>
+            <div class="tooltip">
+                <p>Bohrium</p>
+                <p>Prime Signature: 107</p>
+                <p>Harmonic: 1/107</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 7; grid-column: 8;" data-name="Hassium" data-prime="2² × 3³" data-harmonic="11/9">
+            <div class="num">108</div>
+            <div class="symbol">Hs</div>
+            <div class="tooltip">
+                <p>Hassium</p>
+                <p>Prime Signature: 2² × 3³</p>
+                <p>Harmonic: 11/9</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 7; grid-column: 9;" data-name="Meitnerium" data-prime="109" data-harmonic="1/109">
+            <div class="num">109</div>
+            <div class="symbol">Mt</div>
+            <div class="tooltip">
+                <p>Meitnerium</p>
+                <p>Prime Signature: 109</p>
+                <p>Harmonic: 1/109</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 7; grid-column: 10;" data-name="Darmstadtium" data-prime="2 × 5 × 11" data-harmonic="38/110">
+            <div class="num">110</div>
+            <div class="symbol">Ds</div>
+            <div class="tooltip">
+                <p>Darmstadtium</p>
+                <p>Prime Signature: 2 × 5 × 11</p>
+                <p>Harmonic: 38/110</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 7; grid-column: 11;" data-name="Roentgenium" data-prime="3 × 37" data-harmonic="40/111">
+            <div class="num">111</div>
+            <div class="symbol">Rg</div>
+            <div class="tooltip">
+                <p>Roentgenium</p>
+                <p>Prime Signature: 3 × 37</p>
+                <p>Harmonic: 40/111</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 7; grid-column: 12;" data-name="Copernicium" data-prime="2⁴ × 7" data-harmonic="17/7">
+            <div class="num">112</div>
+            <div class="symbol">Cn</div>
+            <div class="tooltip">
+                <p>Copernicium</p>
+                <p>Prime Signature: 2⁴ × 7</p>
+                <p>Harmonic: 17/7</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 7; grid-column: 13;" data-name="Nihonium" data-prime="113" data-harmonic="1/113">
+            <div class="num">113</div>
+            <div class="symbol">Nh</div>
+            <div class="tooltip">
+                <p>Nihonium</p>
+                <p>Prime Signature: 113</p>
+                <p>Harmonic: 1/113</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 7; grid-column: 14;" data-name="Flerovium" data-prime="2 × 3 × 19" data-harmonic="60/114">
+            <div class="num">114</div>
+            <div class="symbol">Fl</div>
+            <div class="tooltip">
+                <p>Flerovium</p>
+                <p>Prime Signature: 2 × 3 × 19</p>
+                <p>Harmonic: 60/114</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 7; grid-column: 15;" data-name="Moscovium" data-prime="5 × 23" data-harmonic="28/115">
+            <div class="num">115</div>
+            <div class="symbol">Mc</div>
+            <div class="tooltip">
+                <p>Moscovium</p>
+                <p>Prime Signature: 5 × 23</p>
+                <p>Harmonic: 28/115</p>
+            </div>
+        </div>
+
+        <div class="element high-harmonic" style="grid-row: 7; grid-column: 16;" data-name="Livermorium" data-prime="2² × 29" data-harmonic="31/29">
+            <div class="num">116</div>
+            <div class="symbol">Lv</div>
+            <div class="tooltip">
+                <p>Livermorium</p>
+                <p>Prime Signature: 2² × 29</p>
+                <p>Harmonic: 31/29</p>
+            </div>
+        </div>
+
+        <div class="element low-harmonic" style="grid-row: 7; grid-column: 17;" data-name="Tennessine" data-prime="3² × 13" data-harmonic="19/39">
+            <div class="num">117</div>
+            <div class="symbol">Ts</div>
+            <div class="tooltip">
+                <p>Tennessine</p>
+                <p>Prime Signature: 3² × 13</p>
+                <p>Harmonic: 19/39</p>
+            </div>
+        </div>
+
+        <div class="element medium-harmonic" style="grid-row: 7; grid-column: 18;" data-name="Oganesson" data-prime="2 × 59" data-harmonic="61/118">
+            <div class="num">118</div>
+            <div class="symbol">Og</div>
+            <div class="tooltip">
+                <p>Oganesson</p>
+                <p>Prime Signature: 2 × 59</p>
+                <p>Harmonic: 61/118</p>
+            </div>
+        </div>
+
+    </div>
+    <div id="modal">
+        <div id="modal-content">
+            <span id="close">&times;</span>
+            <div id="content"></div>
+        </div>
+    </div>
+    <script>
+        var modal = document.getElementById("modal");
+        var close = document.getElementById("close");
+        var content = document.getElementById("content");
+        document.querySelectorAll('.element').forEach(function(el) {
+            el.addEventListener('click', function() {
+                content.innerHTML = `
+                    <p>Name: ${el.dataset.name}</p>
+                    <p>Prime Signature: ${el.dataset.prime}</p>
+                    <p>Harmonic Prime Signature: ${el.dataset.harmonic}</p>
+                `;
+                modal.style.display = 'flex';
+            });
+        });
+        close.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
