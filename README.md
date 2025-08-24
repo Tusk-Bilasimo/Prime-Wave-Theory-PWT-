@@ -18,7 +18,7 @@ To run the tools locally:
 
 1. Clone the repo:
 2. Install dependencies (Python 3.12+ recommended):
-3. - For Jupyter notebooks: `pip install notebook` (or `jupyterlab` for advanced use).
+3. For Jupyter notebooks: `pip install notebook` (or `jupyterlab` for advanced use).
 
 3. For interactive runs: Open Jupyter with `jupyter notebook` and load .ipynb files.
 
