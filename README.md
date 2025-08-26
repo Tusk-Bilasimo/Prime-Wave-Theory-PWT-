@@ -61,6 +61,10 @@ Run PWT_Harmonics_Periodic_Table.ipynb:
 Generates an interactive HTML table where elements are colored by harmonic ranges (e.g., low: #a7c9e7, medium: #bce6b2, high: #e6b2b6). Hover for signatures, click for details. Explore patterns like high harmonics in stable elements (e.g., Oxygen at 3/2).
 Contributing
 
+Quantum Overlays: Run PWT Quantum and Evolutionary Simulations
+
+This notebook reproduces and extends the models from PWT blog Part 4: Correlations between harmonics and IE/EA, bond/polyatomic evo sims, and genome drift. Ties to Prime Wave Theory's reciprocal lens for quantum-evo insights.
+
 We welcome contributions to expand PWT! Ideas:
 
     Add new tools (e.g., Harmonic Cascade simulator for quantum energies).
