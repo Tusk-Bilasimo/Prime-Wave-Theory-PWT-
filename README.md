@@ -65,6 +65,16 @@ Quantum Overlays: Run PWT Quantum and Evolutionary Simulations
 
 This notebook reproduces and extends the models from PWT blog Part 4: Correlations between harmonics and IE/EA, bond/polyatomic evo sims, and genome drift. Ties to Prime Wave Theory's reciprocal lens for quantum-evo insights.
 
+Light as the Prime Key: Wave-Particle Duality and Prime 2 in PWT
+
+README.md: Instructions for running (e.g., "Install dependencies: pip install numpy sympy scipy matplotlib pulp; Run in Jupyter").
+- balmer_sim.ipynb
+- emf_sim.ipynb
+- entropy_sim.ipynb
+balmer_sim.ipynb (Light as the Prime Key)
+emf_sim.ipynb (Prime Harmonics Across the EMF Spectrum)
+entropy_sim.ipynb (Light, Entropy, and Negentropy)
+
 We welcome contributions to expand PWT! Ideas:
 
     Add new tools (e.g., Harmonic Cascade simulator for quantum energies).
