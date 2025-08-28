@@ -27,6 +27,8 @@ Usage
 
 This repo includes Python scripts and notebooks for PWT simulations. Key files:
 
+A line plot showing n vs ΔE, with actual (blue) and rounded (red dashed) values, annotated with prime signatures. PWT includes the use of integer rounding; however, this rounding methodology is justified by the principle that quantum energy states possess a natural resonance width, not infinite precision, and our approach seeks the core integer signal within this resonance. Future work will focus on material-dependent tests of the gravitational constant, G, to further validate PWT's predictions.
+
     dna_prime_analyzer.py: Analyzes DNA sequences for prime signatures in codon counts, simulates evolutionary drifts to model negentropy. For details, see the blog post PWT Prime-Driven Order in Biology and Consciousness.
     Run: python dna_prime_analyzer.py
     Customize: Edit accession/start/end for different genes.
