@@ -69,6 +69,17 @@ This notebook reproduces and extends the models from PWT blog Part 4: Correlatio
 
 Light as the Prime Key: Wave-Particle Duality and Prime 2 in PWT
 
+Appendix D: Computational Implementation and Visualization
+Prime Wave Theory (PWT) - Version 15.1
+This module provides complete implementations for:
+1. Computing the Prime Wave P_k(x)
+2. Fourier coefficient calculation
+3. Visualization (wave plots and spectra)
+4. Numerical verification of theorems
+Author: Tusk
+Date: October 16, 2025
+License: MIT (for research use)
+
 README.md: Instructions for running (e.g., "Install dependencies: pip install numpy sympy scipy matplotlib pulp; Run in Jupyter").
 - balmer_sim.ipynb
 - emf_sim.ipynb
