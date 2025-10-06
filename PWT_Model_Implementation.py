@@ -1,12 +1,4 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 TimesNewRomanPSMT;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\deftab709
-\pard\pardeftab709\partightenfactor0
-
-\f0\fs24 \cf0 # Prime Wave Theory (PWT) Model Implementation\
+# Prime Wave Theory (PWT) Model Implementation\
 # This script implements the refined damped model developed in our explorations.\
 # It includes functions for symbolic and numerical fits, prime factorization checks,\
 # and examples from atomic spectra, redshifts, particle masses, and the sterile neutrino prediction.\
