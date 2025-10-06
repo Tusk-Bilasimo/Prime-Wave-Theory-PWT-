@@ -80,6 +80,12 @@ Author: Tusk
 Date: October 16, 2025
 License: MIT (for research use)
 
+Prime Wave Theory (PWT) Model Implementation
+1 This script implements the refined damped model developed in our explorations.
+2 It includes functions for symbolic and numerical fits, prime factorization checks,
+3 and examples from atomic spectra, redshifts, particle masses, and the sterile neutrino prediction.
+4 Dependencies: sympy, numpy, scipy.optimize (for curve_fit)
+
 README.md: Instructions for running (e.g., "Install dependencies: pip install numpy sympy scipy matplotlib pulp; Run in Jupyter").
 - balmer_sim.ipynb
 - emf_sim.ipynb
