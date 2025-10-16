@@ -80,6 +80,13 @@ Author: Tusk
 Date: October 16, 2025
 License: MIT (for research use)
 
+Prime Wave Theory V15.2:
+Causal Necessity of Prime-Indexed Discrete Scale Invariance
+in Emergent Agency
+1. Coherence Increase - Generating phi_d_plot
+2. Negative Phase Dominance - Generating fourier_spectrum_plot
+3. Memory Enhancement - Generating memory_persistence_plot
+
 Prime Wave Theory (PWT) Model Implementation
 1 This script implements the refined damped model developed in our explorations.
 2 It includes functions for symbolic and numerical fits, prime factorization checks,
