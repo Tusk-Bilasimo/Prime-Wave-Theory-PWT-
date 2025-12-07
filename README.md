@@ -35,7 +35,7 @@ The correct path requires an entirely algebraic language:
 
 ## 3. The New Direction: Rational Resonance
 
-The PWODE Project's failures paved the way for the development of **Prime Landscape Geometry**, which successfully embeds prime factorization into a rigorous geometric structure.
+The Project's failures paved the way for the development of **Prime Landscape Geometry**, which successfully embeds prime factorization into a rigorous geometric structure.
 
 This research has culminated in the "Hat-trick Experiment Plan," moving from conceptual validation to physical proof:
 
